@@ -7,6 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import study.pass.config.TestBatchConfig;
 import study.pass.repository.packaze.PackageEntity;
 import study.pass.repository.packaze.PackageRepository;
 
@@ -18,13 +20,14 @@ import static org.junit.jupiter.api.Assertions.*;
 @Slf4j
 @SpringBootTest
 @ActiveProfiles("test")
+@ContextConfiguration(classes = TestBatchConfig.class)
 class PassBatchApplicationTests {
 
     @Autowired
     private PackageRepository packageRepository;
 
     @Test
-    public void test_save() throws Exception{
+    public void test_save() throws Exception {
         //given
         PackageEntity packageEntity = new PackageEntity();
         packageEntity.setPackageName("바디 첼린지 PT 12주");
@@ -39,7 +42,7 @@ class PassBatchApplicationTests {
 
 
     @Test
-    public void test_findByCreatedAtAfter() throws Exception{
+    public void test_findByCreatedAtAfter() throws Exception {
         //given
         LocalDateTime dateTime = LocalDateTime.now().minusMinutes(1); // 1분전 시간
 
@@ -68,7 +71,7 @@ class PassBatchApplicationTests {
     }
 
     @Test
-    public void test_updateCountAndPeriod() throws Exception{
+    public void test_updateCountAndPeriod() throws Exception {
         //given
         PackageEntity packageEntity = new PackageEntity();
         packageEntity.setPackageName("바디프로필 이벤트 4개월");
@@ -87,7 +90,7 @@ class PassBatchApplicationTests {
     }
 
     @Test
-    public void test_delete() throws Exception{
+    public void test_delete() throws Exception {
         //given
         PackageEntity packageEntity = new PackageEntity();
         packageEntity.setPackageName("제거할 이용권 4개월");
