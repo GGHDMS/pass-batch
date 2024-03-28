@@ -38,7 +38,7 @@ class ExpiredPassesJobConfigTest {
     private PassRepository passRepository;
 
     @Test
-    public void test_expirePassesStep() throws Exception{
+    void test_expirePassesStep() throws Exception{
         //given
         addPassEntities(10);
 
